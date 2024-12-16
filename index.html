@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      text-align: center;
+      padding: 20px;
+    }
+    .quiz-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .answers button {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background-color: #f4f4f9;
+      cursor: pointer;
+    }
+    .answers button:hover {
+      background-color: #d4d4f7;
+    }
+    .result {
+      font-size: 22px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="quiz">
+      <div class="question" id="question">Question text here</div>
+      <div class="answers" id="answers"></div>
+      <button id="next" style="display: none; margin-top: 15px;">Next Question</button>
+    </div>
+    <div class="result" id="result" style="display: none;"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What does HTML stand for?",
+        options: [
+          "Hyper Text Markup Language",
+          "Hyperlinks and Text Markup Language",
+          "Home Tool Markup Language",
+          "High-Level Text Manipulation Language"
+        ],
+        correct: 0
+      },
+      {
+        question: "Which programming language is used for web development?",
+        options: ["Python", "JavaScript", "C++", "Java"],
+        correct: 1
+      },
+      {
+        question: "What does CSS stand for?",
+        options: [
+          "Cascading Style Sheets",
+          "Creative Style Sheets",
+          "Computer Style Sheets",
+          "Colorful Style Sheets"
+        ],
+        correct: 0
+      },
+      {
+        question: "What is the purpose of React.js?",
+        options: [
+          "Backend development",
+          "UI development",
+          "Database management",
+          "Server management"
+        ],
+        correct: 1
+      }
+    ];
+
+    const questionEl = document.getElementById("question");
+    const answersEl = document.getElementById("answers");
+    const nextButton = document.getElementById("next");
+    const resultEl = document.getElementById("result");
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const currentData = quizData[currentQuestion];
+      questionEl.textContent = currentData.question;
+      answersEl.innerHTML = "";
+
+      currentData.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.textContent = option;
+        button.addEventListener("click", () => checkAnswer(index));
+        answersEl.appendChild(button);
+      });
+    }
+
+    function checkAnswer(selectedIndex) {
+      const currentData = quizData[currentQuestion];
+
+      if (selectedIndex === currentData.correct) {
+        score++;
+        alert("Correct!");
+      } else {
+        alert("Wrong answer. The correct answer is: " + currentData.options[currentData.correct]);
+      }
+
+      nextButton.style.display = "block";
+    }
+
+    nextButton.addEventListener("click", () => {
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+        nextButton.style.display = "none";
+      } else {
+        showResult();
+      }
+    });
+
+    function showResult() {
+      quiz.style.display = "none";
+      resultEl.style.display = "block";
+      resultEl.textContent = `You scored ${score} out of ${quizData.length}`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
