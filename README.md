@@ -1,5 +1,5 @@
 # Quiz App
-
+![Quiz App Screenshot]()
 A simple and interactive Quiz App built using HTML, CSS, and JavaScript. This app provides users with a fun way to test their knowledge on various topics.
 
 ## Features
@@ -35,7 +35,7 @@ quiz-app/
 ```
 
 ## Screenshots
-![Quiz App Screenshot](screenshot.png)
+
 
 ## Future Enhancements
 - **More Question Categories**
