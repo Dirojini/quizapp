@@ -1,5 +1,5 @@
 # Quiz App
-![Quiz App Screenshot]()
+![Quiz App Screenshot](https://github.com/Dirojini/quizapp/blob/764897c53de5218f88de8122aa5010c592dde734/Screenshot%202024-12-24%20115830.png)
 A simple and interactive Quiz App built using HTML, CSS, and JavaScript. This app provides users with a fun way to test their knowledge on various topics.
 
 ## Features
